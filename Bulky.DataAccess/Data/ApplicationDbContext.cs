@@ -14,10 +14,12 @@ namespace Bulky.DataAccess.Data
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
-
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);   // This line is ery important for Identity to run
+            base.OnModelCreating(modelBuilder);   // This line is Very important for Identity to run
 
             modelBuilder.Entity<Category>().HasData(
                 new Category { Id = 1, Name = "Action", DisplayOrder = 1 },
@@ -26,6 +28,41 @@ namespace Bulky.DataAccess.Data
                 new Category { Id = 4, Name = "Horror", DisplayOrder = 4 },
                 new Category { Id = 5, Name = "Crime", DisplayOrder = 5 }
                 );
+
+            modelBuilder.Entity<Company>().HasData(
+                 new Company
+                 {
+                     Id = 1,
+                     Name = "City Centre Limited",
+                     StreetAddress = "6, Ashgate Road",
+                     City = "Chesterfield",
+                     State = "South York Shire",
+                     PhoneNumber = "+4477777777777"
+
+                 },
+                new Company
+                {
+                    Id = 2,
+                    Name = "London Bookshop Limited",
+                    StreetAddress = "30, Derbyshire Road",
+                    City = "Central London",
+                    State = "London",
+                    PhoneNumber = "+4477777777788"
+                },
+
+                new Company
+                {
+                    Id = 3,
+                    Name = "Concordant Express Limited",
+                    StreetAddress = "24, Nottingham Street",
+                    City = "Nottingham",
+                    State = "Scotland",
+                    PhoneNumber = "+4477777777799"
+                }
+
+                );
+
+
 
             modelBuilder.Entity<Product>().HasData(
                 new Product
